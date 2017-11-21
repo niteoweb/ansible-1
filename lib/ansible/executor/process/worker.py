@@ -19,7 +19,7 @@
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-import multiprocessing
+import billiard
 import os
 import sys
 import traceback
@@ -50,7 +50,7 @@ except ImportError:
 __all__ = ['WorkerProcess']
 
 
-class WorkerProcess(multiprocessing.Process):
+class WorkerProcess(billiard.Process):
     '''
     The worker thread class, which uses TaskExecutor to run tasks
     read from a job queue and pushes results into a results queue
